@@ -11,6 +11,8 @@ before_install:
          - nvm install 12.2 # for Node v5
          - node --version
          - gem install bundler:2.2.11
+         - gem install rails
+         - rails -v
 
 script: 
          - rails webpacker:install
