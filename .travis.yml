@@ -9,8 +9,8 @@ before_install:
          - gem install bundler:2.2.11
 
 script:
-         - npm cache clean -f
-         - npm install -g n
-         - n stable
+         - sudo npm cache clean -f
+         - sudo npm install -g n
+         - sudo n stable
          - RAILS_ENV=test bundle exec rails webpacker:compile
          - bundle exec rspec
