@@ -9,8 +9,7 @@ before_install:
          - gem install bundler:2.2.11
 
 script:
-         - sudo npm cache clean -f
-         - sudo npm install -g n
-         - sudo n stable
+         - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+         - sudo apt-get install -y nodejs
          - RAILS_ENV=test bundle exec rails webpacker:compile
          - bundle exec rspec
