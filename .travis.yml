@@ -12,7 +12,6 @@ before_install:
          - node --version
          - gem install bundler:2.2.11
 
-script:
-         - bash 
+script: 
          - RAILS_ENV=test bundle exec rails webpacker:compile
          - bundle exec rspec
