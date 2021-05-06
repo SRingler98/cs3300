@@ -14,11 +14,17 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= project.title %></td>
+          <td><%= project.description %></td>
+          <td><%= link_to 'Show', project %></td>
+          <td><%= link_to 'Edit', edit_project_path(project) %></td>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td><%= project.title %></td>
+          <td><%= project.description %></td>
+          <td><%= link_to 'Show', project %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Project', new_project_path %>
+<% end %>
