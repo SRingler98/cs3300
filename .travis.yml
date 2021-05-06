@@ -11,9 +11,14 @@ before_install:
          - nvm install 12.2 # for Node v5
          - node --version
          - gem install bundler:2.2.11
-           # - gem install rails
 
 script: 
-         # - rails webpacker:install
-         # - RAILS_ENV=test bundle exec rails webpacker:compile
          - bundle exec rspec
+
+deploy:
+        provider: heroku
+        api_key: 3320f90d-9c6a-453f-8757-fe2ef9e40558
+        app: guarded-basin-59326
+        run: "rake db:migrate"
+        on:
+                all_branches: true 
